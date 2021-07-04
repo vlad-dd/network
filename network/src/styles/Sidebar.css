@@ -1,0 +1,27 @@
+.nav {
+  grid-area: n;
+  background-color: black;
+}
+
+.item {
+  font-size: 2rem;
+  padding: 34.2px;
+}
+
+.item a:hover {
+  color: #ffdd;
+}
+
+.item a:active {
+  color: gray;
+}
+
+.item a {
+  color: white;
+  text-decoration: none;
+}
+
+.item a.active {
+  color: goldenrod;
+}
+/*# sourceMappingURL=Sidebar.css.map */

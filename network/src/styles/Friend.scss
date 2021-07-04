@@ -1,0 +1,12 @@
+%imgFriend{
+    height: 60px;
+    width: 60px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+
+
+.friend_img{
+    @extend %imgFriend;
+}

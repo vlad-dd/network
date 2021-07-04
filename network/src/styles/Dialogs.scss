@@ -1,0 +1,42 @@
+%textTemplate{
+    padding: 60px;
+    font-size: 1.3rem;
+    font-weight: 500;
+    border: 3px solid black;
+    cursor: pointer;
+
+    &:hover{
+        color: blanchedalmond;
+    }
+
+    &:active{
+        color: cornflowerblue;
+    }
+}
+
+.dialogs{
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.dialogs_items .active{
+    color: black;
+    
+
+}
+
+.dialog{
+    @extend %textTemplate;
+    
+
+}
+
+.messages{
+
+}
+
+.message{
+    @extend %textTemplate;
+
+}
+

@@ -1,0 +1,35 @@
+$col1: white;
+$col2: #ffdd;
+$col3: gray;
+
+.nav {
+    grid-area: n;
+    background-color: black;
+}
+
+%templateA {
+    &{
+        font-size: 2rem;
+        padding: 34.2px
+    }
+    & a:hover{
+        color: $col2;
+        
+    }
+    & a:active{
+        color: $col3;
+        
+    }
+    & a {
+        color: $col1;
+        text-decoration: none;
+    }
+}
+
+.item{
+    @extend %templateA;
+}
+
+.item a.active{
+    color: goldenrod;
+}
