@@ -2,15 +2,13 @@ import "../../styles/Dialogs.css";
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
 import React from "react";
-import {AddDialogActionCreator} from '../redux/DialogsPRed';
-import {UpdateDialogActionCreator} from '../redux/DialogsPRed';
 
 const Dialogs = (props) => {
-  let DialogsElements = props.dialogsState.DialogsData.map((el) => {
+  let DialogsElements = props.DialogsData.map((el) => {
     return (<Dialog className='dialog' id={el.id} name={el.name} img={el.img} />);
   })
   
-  let MessageElements = props.dialogsState.MessageData.map((messageEl) => {
+  let MessageElements = props.MessageData.map((messageEl) => {
     return(<Message text={messageEl.text} />)
   });
 
@@ -18,12 +16,12 @@ const Dialogs = (props) => {
 
 
   let addDialog = () => {
-    props.dispatch(AddDialogActionCreator());
+    props.addNewDialog();
   }
 
   let ChangeDialogFunc = () => {
     let dialog = newDialogOne.current.value;
-    props.dispatch(UpdateDialogActionCreator(dialog));
+    props.UpdateDialog(dialog);
   }
 
   return (
@@ -33,7 +31,7 @@ const Dialogs = (props) => {
       </div>
       <div className="messages">
         {MessageElements}
-        <textarea onChange= {ChangeDialogFunc} value={props.dialogsState.newDialogText} ref={newDialogOne}></textarea>
+        <textarea onChange= {ChangeDialogFunc} value={props.newDialogText} ref={newDialogOne}></textarea>
        <div><button onClick = {addDialog}>Add message</button></div>
       </div>
     </div>
