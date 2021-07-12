@@ -1,0 +1,24 @@
+.users_img {
+  height: 70px;
+  width: 70px;
+  border-radius: 60%;
+}
+
+.info_block {
+  display: inline-block;
+  border: 3px solid black;
+  border-radius: 30%;
+  height: 60px;
+  padding: 20px;
+}
+
+.info_block span {
+  padding: 10px;
+}
+
+.selected {
+  font-weight: bold;
+  color: rosybrown;
+  cursor: pointer;
+}
+/*# sourceMappingURL=Users.css.map */

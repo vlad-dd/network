@@ -5,11 +5,11 @@ import React from "react";
 
 const Dialogs = (props) => {
   let DialogsElements = props.DialogsData.map((el) => {
-    return (<Dialog className='dialog' id={el.id} name={el.name} img={el.img} />);
+    return (<Dialog className='dialog' id={el.id} name={el.name} img={el.img} key={el.id}/>);
   })
   
   let MessageElements = props.MessageData.map((messageEl) => {
-    return(<Message text={messageEl.text} />)
+    return(<Message text={messageEl.text} key={messageEl.id}/>)
   });
 
   let newDialogOne = React.createRef();

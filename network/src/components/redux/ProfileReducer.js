@@ -1,5 +1,7 @@
 const ADD_POST = "ADD_POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT";
+const SET_PROFILE_DATA = 'SET_PROFILE_DATA';
+const SET_JOB_STATUS = 'SET_JOB_STATUS'
 
 let profileInitialState = {
   PostData: [
@@ -9,24 +11,45 @@ let profileInitialState = {
   ],
 
   newPostTxt: "",
+  setProfileData: [],
+  jobHunting: false
+
 };
 
  const profileReducer = (state = profileInitialState, action) => {
+   let stateCopy;
   switch (action.type) {
     case ADD_POST: {
-      let newPost = {
-        id: 5,
-        message: state.newPostTxt,
-        likesCount: 1,
-        dislikesCount: 1,
-      };
-      state.PostData.push(newPost);
-      state.newPostTxt = " ";
-      return state;
+      stateCopy = {
+        ...state,
+        newPostTxt: '',
+        PostData: [...state.PostData, { id: 5, message: state.newPostTxt,likesCount: 1, dislikesCount: 1,}],
+      }
+
+      return stateCopy;
     }
     case UPDATE_NEW_POST_TEXT: {
-      state.newPostTxt = action.someText;
-      return state;
+      stateCopy = {
+        ...state,
+        newPostTxt: action.someText
+      }
+      return stateCopy;
+    }
+
+    case SET_PROFILE_DATA: {
+      stateCopy = {
+        ...state,
+        setProfileData: [action.profileData],
+      }
+      return stateCopy;
+    }
+
+    case SET_JOB_STATUS: {
+      stateCopy = {
+        ...state,
+        jobHunting: action.jobStatus,
+      }
+      return stateCopy;
     }
     default:
       return state;
@@ -45,5 +68,19 @@ export let UpdatePostActionCreator = (text) => {
     someText: text,
   };
 };
+
+export let setProfileDataActionCreator = (newData) => {
+  return {
+    type: SET_PROFILE_DATA,
+    profileData: newData
+  }
+}
+
+export let jobStatusActionCreator = (status) => {
+  return {
+    type: SET_JOB_STATUS,
+    jobStatus: status
+  }
+}
 
 export default profileReducer;

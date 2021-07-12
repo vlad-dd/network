@@ -1,4 +1,37 @@
 .decription_block {
   padding: 10px;
 }
-/*# sourceMappingURL=ProfileInfo.css.map */
+
+.gif_status {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+
+.fonts {
+  font-size: 2.3em;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+
+.jobHunting_status {
+  position: relative;
+  top: 45%;
+  
+}
+
+.contacts_info { 
+  position: relative;
+  top: 50%;
+  padding: 10px;
+
+}
+
+
+.main_container {
+  display: grid;
+  grid-template-columns: 1fr 4fr 3fr;
+  grid-gap: 10px;
+}
+
+

@@ -8,7 +8,8 @@ import React from "react";
 
 const MyPosts = (props) => {
   let PostDataElements = props.PostData.map((PostDataEl) => {
-    return(<Post message={PostDataEl.message} likes={PostDataEl.likesCount} dislikes={PostDataEl.dislikesCount} />)
+    return(<Post message={PostDataEl.message} likes={PostDataEl.likesCount} dislikes={PostDataEl.dislikesCount} 
+      key={PostDataEl.id}/>)
   });
 
   let newPostElement =  React.createRef();
