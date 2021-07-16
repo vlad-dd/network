@@ -1,6 +1,7 @@
 import defaultUserPhoto from "../../images/default.png";
 import { NavLink } from 'react-router-dom';
 
+
 const MainUsersComponent = (props) => {
   let selected = "selected";
   let pagesCount = Math.ceil(
@@ -17,11 +18,8 @@ const MainUsersComponent = (props) => {
           {pages.map((pg) => {
             return (
               <span
-              
                 className={props.currentPage === pg && selected}
-                onClick={() => {props.getPage(pg)}}>
-                {pg}
-              </span>
+                onClick={() => {props.getPage(pg)}}>{pg}</span>
             );
           })}
         </div>
@@ -38,22 +36,11 @@ const MainUsersComponent = (props) => {
               </span>
               <div>
                 {el.followed ? (
-                  <button
+                  <button disabled = {props.followingInProgress.some(id => id === el.id)}
                     onClick={() => {
-                      props.Unfollow(el.id);
-                    }}
-                  >
-                    Unfollow
-                  </button>
-                ) : (
-                  <button
-                    onClick={() => {
-                      props.Follow(el.id);
-                    }}
-                  >
-                    Follow
-                  </button>
-                )}
+                      props.UnFollowThunkCreator(el.id)}}>Unfollow</button>) : 
+                    (<button disabled = {props.followingInProgress.some(id => id === el.id)} onClick={() => {
+                      props.followThunkActionCreator(el.id)}}>Follow</button>)}
               </div>
             </div>
           );

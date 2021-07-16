@@ -1,3 +1,4 @@
+import userAPI from "../../API/API";
 const ADD_POST = "ADD_POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT";
 const SET_PROFILE_DATA = 'SET_PROFILE_DATA';
@@ -11,7 +12,22 @@ let profileInitialState = {
   ],
 
   newPostTxt: "",
-  setProfileData: [],
+  setProfileData: {
+    fullName: 'testName',
+    aboutMe: 'Test',
+    contacts: {
+      facebook: 'test.com',
+      website: 'test.com',
+      twitter: 'test.com',
+      instagram: 'test.com',
+      youtube: 'test.com',
+      github: 'test.com'
+    },
+    photos: {
+      small: 'test.com',
+      large: 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dog-jokes3-1581711672.jpg'
+    }
+  }, 
   jobHunting: false
 
 };
@@ -39,7 +55,7 @@ let profileInitialState = {
     case SET_PROFILE_DATA: {
       stateCopy = {
         ...state,
-        setProfileData: [action.profileData],
+        setProfileData: action.profileData,
       }
       return stateCopy;
     }
@@ -82,5 +98,17 @@ export let jobStatusActionCreator = (status) => {
     jobStatus: status
   }
 }
+
+
+export const getNewUsersThunkCreator = (userId) => {
+  return (dispatch) => {
+    userAPI.getUsers(userId).then((data) => {
+      dispatch(setProfileDataActionCreator(data));
+      dispatch(jobStatusActionCreator(data.lookingForAJob));
+    })
+  }
+}
+
+
 
 export default profileReducer;

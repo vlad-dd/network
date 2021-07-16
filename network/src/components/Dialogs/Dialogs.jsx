@@ -2,8 +2,12 @@ import "../../styles/Dialogs.css";
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
 import React from "react";
+import Login from "../Login/Login";
+import { Redirect } from "react-router";
+
 
 const Dialogs = (props) => {
+  
   let DialogsElements = props.DialogsData.map((el) => {
     return (<Dialog className='dialog' id={el.id} name={el.name} img={el.img} key={el.id}/>);
   })
@@ -23,6 +27,8 @@ const Dialogs = (props) => {
     let dialog = newDialogOne.current.value;
     props.UpdateDialog(dialog);
   }
+  
+
 
   return (
     <div className="dialogs">

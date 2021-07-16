@@ -1,13 +1,15 @@
 import '../../../styles/ProfileInfo.css';
 import Preloader from '../../Common/Preloader';
-import status_gif from '../../../images/lfw.gif';
+import status_gif from '../../../images/giphy.gif';
 import notInterested_gif from '../../../images/notInterested.gif';
+import Status from './Status';
 
 
 const ProfileInfo = (props) => {
-  if(props.profileData === null || props.profileData === undefined) {
-    return <Preloader />
-  }
+  // if(props.profileData === null || props.profileData === undefined) {
+  //   return <Preloader />
+  // }
+  
   return (
     <div>
         <div>
@@ -18,6 +20,7 @@ const ProfileInfo = (props) => {
         <div className="decription_block">
           <h2 className='fonts'>{props.ProfileData.fullName}</h2>
           <img src = {props.ProfileData.photos.large} className='gif_status'/>
+          <Status status = 'test-status'/>
           <p><strong>About me: </strong>{props.ProfileData.aboutMe}</p>
         </div>
         <div className="jobHunting_status">

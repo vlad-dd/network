@@ -1,24 +1,25 @@
 import React from "react";
 import Profile from "./Profile";
-import axios from "axios";
 import { connect } from "react-redux";
-import {setProfileDataActionCreator} from '../redux/ProfileReducer';
 import {jobStatusActionCreator} from '../redux/ProfileReducer';
 import {withRouter} from 'react-router-dom';
+import {getNewUsersThunkCreator} from '../redux/ProfileReducer';
+import {withAuthRedirect} from '../../hok/withAuthRedirect';
+import { compose } from "redux";
+
 
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
-      // let userId = this.props.match.params.userId
-        axios.get
-        ( `https://social-network.samuraijs.com/api/1.0/profile/`)
-        .then((response) => {
-            this.props.setProfileData(response.data);
-            this.props.setJobStatus(response.data.lookingForAJob)
-        });
+      let userId = this.props.location.pathname
+      if(!userId) {
+        userId = '/profile';
+      }
+      this.props.getNewUsersThunkCreator(userId);
     }
 
   render() {
+    
     return ( 
       <div>
           <Profile {...this.props} ProfileData = {this.props.ProfileData}
@@ -30,10 +31,11 @@ class ProfileContainer extends React.Component {
 
 let mapStateToProps = (state) => ({
     ProfileData: state.profilePage.setProfileData,
-    jobHunting: state.profilePage.jobHunting
+    jobHunting: state.profilePage.jobHunting,
 });
 
-let urlDataContainerComponent = withRouter(ProfileContainer);
 
-export default connect(mapStateToProps, {setProfileData: setProfileDataActionCreator,
-setJobStatus: jobStatusActionCreator})(ProfileContainer);
+
+
+export default compose(connect(mapStateToProps, {setJobStatus: jobStatusActionCreator, getNewUsersThunkCreator: getNewUsersThunkCreator}),
+ withAuthRedirect, withRouter)(ProfileContainer);
