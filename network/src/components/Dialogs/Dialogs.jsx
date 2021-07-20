@@ -4,6 +4,7 @@ import Message from "./Message/Message";
 import React from "react";
 import Login from "../Login/Login";
 import { Redirect } from "react-router";
+import MainFieldComponent from "./DialogsInputForm";
 
 
 const Dialogs = (props) => {
@@ -16,20 +17,6 @@ const Dialogs = (props) => {
     return(<Message text={messageEl.text} key={messageEl.id}/>)
   });
 
-  let newDialogOne = React.createRef();
-
-
-  let addDialog = () => {
-    props.addNewDialog();
-  }
-
-  let ChangeDialogFunc = () => {
-    let dialog = newDialogOne.current.value;
-    props.UpdateDialog(dialog);
-  }
-  
-
-
   return (
     <div className="dialogs">
       <div className="dialogs_items">
@@ -37,8 +24,9 @@ const Dialogs = (props) => {
       </div>
       <div className="messages">
         {MessageElements}
-        <textarea onChange= {ChangeDialogFunc} value={props.newDialogText} ref={newDialogOne}></textarea>
-       <div><button onClick = {addDialog}>Add message</button></div>
+        <MainFieldComponent addNewDialog = {props.addNewDialog}/>
+        {/* <textarea onChange= {ChangeDialogFunc} value={props.newDialogText} ref={newDialogOne}></textarea>
+       <div><button onClick = {addDialog}>Add message</button></div> */}
       </div>
     </div>
   );

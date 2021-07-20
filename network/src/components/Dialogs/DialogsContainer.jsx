@@ -1,6 +1,5 @@
 import "../../styles/Dialogs.css";
 import { AddDialogActionCreator } from "../redux/DialogsPRed";
-import { UpdateDialogActionCreator } from "../redux/DialogsPRed";
 import Dialogs from "./Dialogs";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
@@ -20,11 +19,8 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
   return {
-    addNewDialog: () => {
-      dispatch(AddDialogActionCreator());
-    },
-    UpdateDialog: (dialog) => {
-      dispatch(UpdateDialogActionCreator(dialog));
+    addNewDialog: (newMessage) => {
+      dispatch(AddDialogActionCreator(newMessage));
     },
   };
 };

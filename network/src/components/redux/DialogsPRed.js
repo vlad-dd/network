@@ -1,5 +1,4 @@
 const ADD_NEW_MESSAGE = "ADD_NEW_MESSAGE";
-const UPDATE_MESSAGE_TEXT = "UPDATE_MESSAGE_TEXT";
 
 let dialogsInitialState = {
   MessageData: [
@@ -9,14 +8,12 @@ let dialogsInitialState = {
     { id: 4, text: "Message_4" },
     { id: 5, text: "Message_5" },
   ],
-
-  newDialogText: "",
-
+  
   DialogsData: [
     {
       id: 1,
       name: "User_1",
-      img: "https://file.liga.net/images/general/2019/06/05/20190605142156-5002.jpg?v=1559739638",
+      img: "https://www.meme-arsenal.com/memes/fe79934edc576f1bf0a2a21ea31813bb.jpg",
     },
     {
       id: 2,
@@ -47,14 +44,7 @@ const dialogsReducer = (state = dialogsInitialState, action) => {
       stateCopy = {
         ...state,
         newDialogText: '',
-        MessageData: [...state.MessageData,{id: 6,text: state.newDialogText,}]
-      }
-      return stateCopy;
-    }
-    case UPDATE_MESSAGE_TEXT: {
-      stateCopy = {
-        ...state,
-        newDialogText: action.someMessage
+        MessageData: [...state.MessageData,{id: 6,text: action.newDialogText,}]
       }
       return stateCopy;
     }
@@ -63,16 +53,10 @@ const dialogsReducer = (state = dialogsInitialState, action) => {
   }
 };
 
-export let AddDialogActionCreator = () => {
+export let AddDialogActionCreator = (newMessage) => {
   return {
     type: ADD_NEW_MESSAGE,
-  };
-};
-
-export let UpdateDialogActionCreator = (dialog) => {
-  return {
-    type: UPDATE_MESSAGE_TEXT,
-    someMessage: dialog,
+    newDialogText: newMessage
   };
 };
 

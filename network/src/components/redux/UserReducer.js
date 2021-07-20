@@ -92,6 +92,8 @@ const UserReducer = (state = initialState, action) => {
   }
 };
 
+
+
 export let FollowActionCreator = (userId) => {
   return {
     type: FOLLOW,

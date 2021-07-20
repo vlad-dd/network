@@ -46,3 +46,4 @@ export const setDataThunkCreator = () => {
 }
 
 export default AuthReducer;
+ 

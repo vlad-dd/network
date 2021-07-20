@@ -1,10 +1,7 @@
 import "../../../styles/MyPosts.css";
 import Post from "./Post/Post";
 import React from "react";
-
-
-
-
+import MainPostFormComponent from "./TextAreaForm";
 
 const MyPosts = (props) => {
   let PostDataElements = props.PostData.map((PostDataEl) => {
@@ -12,26 +9,15 @@ const MyPosts = (props) => {
       key={PostDataEl.id}/>)
   });
 
-  let newPostElement =  React.createRef();
-
-
-  let addNewPost = () => {
-    props.addPost();
-  }
-
-  let updatePost = () => {
-    let text = newPostElement.current.value;
-    props.onPostChange(text);
-  }
-
-
   return (
     <div className="postsBlock">
       <div><h2>My posts</h2><div>
-        <div>
+        <MainPostFormComponent addPost = {props.addPost}/>
+        {/* <div>
           <textarea onChange = {updatePost} ref={newPostElement} value= {props.txt}/>
           </div>
-          <div><button onClick={addNewPost}>Add post</button></div>
+          <div><button onClick={addNewPost}>Add post</button>
+          </div> */}
       </div>
       </div>
       <div className="posts">
