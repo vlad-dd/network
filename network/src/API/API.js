@@ -55,6 +55,20 @@ export const userAPI = {
                 status: newStatus
             })
         )
+    },
+
+
+    login(eml, pas, rem = false) {
+        return (
+            instanse.post('auth/login', {
+            email: eml,
+            password: pas,
+            rememberMe: rem
+        })
+        )},
+
+    logout() {
+        return (instanse.delete('auth/login'));
     }
 }
  

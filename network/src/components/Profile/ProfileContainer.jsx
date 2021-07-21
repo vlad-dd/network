@@ -13,11 +13,14 @@ import {updateStatusThunkCreator} from '../redux/ProfileReducer';
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
-      debugger;
       let userId = this.props.location.pathname;
       userId = userId.match(/(\d+)/g)
       if(!userId) {
         userId = '18285';
+        //this is test id, for correct work use {isAuth ? this.props.userId : <Redirect to={'/login'} />} 
+        if(!userId) {
+          this.props.history.push('/Login');
+        }
       }
       this.props.getNewUsersThunkCreator(userId);
       this.props.getUserStatusThunkCreator(userId);
@@ -40,7 +43,9 @@ let mapStateToProps = (state) => ({
     ProfileData: state.profilePage.setProfileData,
     jobHunting: state.profilePage.jobHunting,
     status: state.profilePage.status,
-    isFetching: state.profilePage.isFetching
+    isFetching: state.profilePage.isFetching,
+    userId: state.profilePage.userId,
+    isAuth: state.authPart.isAuth
 });
 
 

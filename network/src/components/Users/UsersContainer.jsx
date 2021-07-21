@@ -8,6 +8,8 @@ import {getUsersThunkCreator} from '../redux/UserReducer';
 import {getPageThunkCreator} from '../redux/UserReducer';
 import {UnFollowThunkCreator} from '../redux/UserReducer';
 import {followThunkActionCreator} from '../redux/UserReducer';
+import { getUsers, getPageSize, getTotalUsersCount, getCurrentPage, getIsFetching, getFollowingInProgress}
+ from "../redux/UserSelector";
 
 class UserC extends React.Component {
   componentDidMount() {
@@ -27,16 +29,17 @@ class UserC extends React.Component {
       UnFollowThunkCreator = {this.props.UnFollowThunkCreator} followThunkActionCreator = {this.props.followThunkActionCreator}/> </>);}
 }
 
+
 let mapStateToProps = (state) => {
-    return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        followingInProgress: state.usersPage.followingInProgress
-    };
+  return {
+      users: getUsers(state),
+      pageSize: getPageSize(state),
+      totalUsersCount: getTotalUsersCount(state),
+      currentPage: getCurrentPage(state),
+      isFetching: getIsFetching(state),
+      followingInProgress: getFollowingInProgress(state)
   };
+};
 
 
 export default connect(mapStateToProps, {
