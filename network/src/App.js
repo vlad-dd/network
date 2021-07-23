@@ -15,6 +15,8 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { initializeThunkCreator } from "./components/redux/app-reducer";
 import Preloader from "./components/Common/Preloader";
+import ProfileContainerWithHook from "./components/Profile/ProfileContainerWithHook";
+import  UsersContainerWithHook  from "./components/Users/UsersContainerWithHook";
 
 
 class App extends React.Component {
@@ -28,12 +30,12 @@ class App extends React.Component {
     <HeaderContainer />
     <Sidebar />
     <div className="app-wrapper-content">
-    <Route path='/profile' render={ () => <ProfileContainer  />} />
+    <Route path='/profile' render={ () => <ProfileContainerWithHook  />} />
     <Route path='/dialogs' render={() => <DialogsContainer/>} />
     <Route path='/news' render={() => <News />} />
     <Route path="/music" render={() => <Music />} />
     <Route path="/settings" render={() => <Settings />}/>
-    <Route path="/users" render={() => <UsersContainer />}/>
+    <Route path="/users" render={() => <UsersContainerWithHook />}/>
     <Route path="/login" render={() => <Login />}/>
     </div>
   </div>

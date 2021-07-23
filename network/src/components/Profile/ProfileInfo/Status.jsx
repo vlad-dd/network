@@ -1,50 +1,53 @@
-import React from "react";
-import "../../../styles/Status.css";
-import Preloader from "../../Common/Preloader";
+//This component will not be used anymore.
 
-class Status extends React.Component {
-    state = {
-        editMode: false,
-        status: this.props.status,
-    }
 
-    activateEditMode () {
-        this.setState( {
-            editMode: true
-        } );
-        // this.forceUpdate();
-    }
+// import React from "react";
+// import "../../../styles/Status.css";
+// import Preloader from "../../Common/Preloader";
 
-    deactivateEditMode() {
-        this.setState({
-            editMode: false
-        })
-        this.props.updateStatusThunkCreator(this.state.status);
-    }
+// class Status extends React.Component {
+//     state = {
+//         editMode: false,
+//         status: this.props.status,
+//     }
 
-    onStatusChange = (el) => {
-        this.setState( {
-            status: el.currentTarget.value
-        } )
-    }
+//     activateEditMode () {
+//         this.setState( {
+//             editMode: true
+//         } );
+//         // this.forceUpdate();
+//     }
 
-    componentDidUpdate(prevProps, prevState) {
-        if(prevProps.status != this.props.status) {
-            this.setState ({
-                status: this.props.status
-            })
-        }
-    }
+//     deactivateEditMode() {
+//         this.setState({
+//             editMode: false
+//         })
+//         this.props.updateStatusThunkCreator(this.state.status);
+//     }
 
-    render() {
-       return (
-       <div>
-           {this.props.isFetching ? <Preloader /> : ' '}
-        {!this.state.editMode ? <div><span onDoubleClick = {this.activateEditMode.bind(this)}>{this.props.status ? this.props.status: '...'}</span></div> : 
-        <div><span><input onChange = {this.onStatusChange} autoFocus = {true} onBlur = {this.deactivateEditMode.bind(this)} value = {this.props.status}/></span></div> }
+//     onStatusChange = (el) => {
+//         this.setState( {
+//             status: el.currentTarget.value
+//         } )
+//     }
+
+//     componentDidUpdate(prevProps, prevState) {
+//         if(prevProps.status != this.props.status) {
+//             this.setState ({
+//                 status: this.props.status
+//             })
+//         }
+//     }
+
+//     render() {
+//        return (
+//        <div>
+//            {this.props.isFetching ? <Preloader /> : ' '}
+//         {!this.state.editMode ? <div><span onDoubleClick = {this.activateEditMode.bind(this)}>{this.props.status ? this.props.status: '...'}</span></div> : 
+//         <div><span><input onChange = {this.onStatusChange} autoFocus = {true} onBlur = {this.deactivateEditMode.bind(this)} value = {this.props.status}/></span></div> }
            
-        </div>)
-    }
-}
+//         </div>)
+//     }
+// }
 
-export default Status;
+// export default Status;
